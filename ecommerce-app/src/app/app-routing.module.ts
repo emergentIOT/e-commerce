@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'products',
     pathMatch: 'full',
-    //Lazy Loading
+    // Lazy Loading
     loadChildren: './products/products.module#ProductsModule'
   }
 ];

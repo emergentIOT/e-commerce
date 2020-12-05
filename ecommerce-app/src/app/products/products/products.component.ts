@@ -10,14 +10,13 @@ import { Observable } from 'rxjs';
 export class ProductsComponent implements OnInit {
 
   public products: Observable<any> | undefined;
-  
   constructor(
     private _productService: ProductDataService
   ) { }
 
   ngOnInit() {
     this.products = this._productService.getAllProducts();
-    console.log("products", this.products);
+    console.log('products', this.products);
   }
 
 }
