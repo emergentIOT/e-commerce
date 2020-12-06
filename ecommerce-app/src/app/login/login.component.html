@@ -1,0 +1,22 @@
+<mat-card class="login-card">
+    <mat-card-header>
+        <mat-card-title>
+            Login
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form>
+            <mat-form-field>
+                <input matInput type="email" name="email" [(ngModel)]="email"
+                placeholder="Email" required />
+            </mat-form-field><br/>
+            <mat-form-field>
+                <input matInput type="password" name="password" [(ngModel)]="password"
+                placeholder="password" required />
+            </mat-form-field>
+        </form>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="login()">Login</button>
+        </mat-card-actions>
+    </mat-card-content>
+</mat-card>

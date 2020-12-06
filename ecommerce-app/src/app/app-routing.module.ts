@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ProductsModule } from './products/products.module';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products/products.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,10 @@ const routes: Routes = [
     pathMatch: 'full',
     // Lazy Loading
     loadChildren: './products/products.module#ProductsModule'
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 
