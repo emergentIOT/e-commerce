@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
      
   }
 
-  register(){
+  register() {
     const user = this.userGroup.getRawValue();
     this.authService.register(user).subscribe(data => {
       console.log("Data received");
