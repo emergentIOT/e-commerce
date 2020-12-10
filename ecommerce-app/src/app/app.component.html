@@ -1,10 +1,22 @@
 <header>
     <mat-toolbar color="primary">
         <mat-toolbar-row>
+            <!--
+                class="logo", created to use later 
+                <a class="logo"></a> -->
             <span>eCommerce</span>
             <a mat-raised-button routerLink="/">home</a>
             <a mat-raised-button routerLink="/products">Products</a>
-            <a mat-raised-button routerLink="/login">Login</a>
+            <a mat-raised-button routerLink="/login" *ngIf="!user">Login</a>
+            <div>
+                <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
+                    <mat-icon>account_circle</mat-icon>
+                    {{user.name}}
+                </a>
+                <mat-menu #menu="matMenu">
+                    <button (click)="logout()" mat-menu-item>logout</button>
+                </mat-menu>
+            </div>
         </mat-toolbar-row>
 
     </mat-toolbar>
