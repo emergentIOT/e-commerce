@@ -6,18 +6,28 @@
     </mat-card-header>
     <mat-card-content>
         <form [formGroup]="userGroup">
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <input matInput type="text" name="name" formControlName="name"
                 placeholder="name" required />
             </mat-form-field><br/>
-            <mat-form-field>
+            <mat-form-field class="full-width">
                 <input matInput type="email" name="email" formControlName="email"
                 placeholder="Email" required />
-            </mat-form-field><br/>
-            <mat-form-field>
+            </mat-form-field>
+            <mat-error class="full-width" *ngIf="email.invalid">
+                Invalid Email
+            </mat-error><br/>
+            <mat-form-field class="full-width">
                 <input matInput type="password" name="password" formControlName="password"
                 placeholder="password" required />
+            </mat-form-field><br/>
+            <mat-form-field class="full-width">
+                <input matInput type="password" name="repeatPassword" formControlName="repeatPassword"
+                placeholder="Repeat Password" required />
             </mat-form-field>
+            <mat-error *ngIf="repeatPassword.invalid && repeatPassword.errors.passwordMatch">
+                Password sshould match
+            </mat-error>
         </form>
         <mat-card-actions>
             <button mat-raised-button color="primary" (click)="register()">Register</button><br/>
