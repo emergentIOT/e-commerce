@@ -38,6 +38,7 @@ export class RegisterComponent implements OnInit {
     }
 
     const user = this.userGroup.getRawValue();
+    console.log("got user", user);
     this.authService.register(user).subscribe(data => {
       console.log("Data received");
       this.router.navigate(['/login']);
