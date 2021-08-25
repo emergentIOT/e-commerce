@@ -10,7 +10,7 @@ const router = express.Router();
 
 //api/auth/register,login,
 router.post('/register', asyncHandler(insert));
-router.get('/login', asyncHandler(getUser));
+router.post('/login', asyncHandler(getUser));
 
 async function insert(req, res, next) {
     

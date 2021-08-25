@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   login(){
     this.authService.login(this.email, this.password).subscribe(done => {
+      console.log(`User Login Request submitted, received : ${done}`)
       this.router.navigate(['']);
     })
    

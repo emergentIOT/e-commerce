@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
+import { Observable, of, Subject, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { User } from '../interfaces/User';
 
 
@@ -9,13 +11,25 @@ import { User } from '../interfaces/User';
 export class AuthService {
 
   private user$ = new Subject<User>();
- 
-  constructor() { }
+  private apiUrl = 'http://localhost:8000/api/auth/'
+
+  constructor(private httpClient: HttpClient) { }
 
   login(email: string, password: string) {
     const loginCredentials = { email, password };
-    console.log("User logn", loginCredentials);
-    return of(loginCredentials);
+    return this.httpClient
+      .post<User>(`${this.apiUrl}login`, loginCredentials)
+      .pipe(
+        switchMap(foundUser => {
+          console.log(`Found User ${foundUser}`);
+          this.setUser(foundUser);
+          return of(foundUser);
+        }),
+        catchError(error => {
+          return throwError(`Login details not verified ${error}`)
+        })
+      );
+
   }
 
   logout() {
